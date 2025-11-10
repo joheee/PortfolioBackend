@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image "docker:latest"
-            args "-v /var/run/docker.sock:/var/run/docker.sock"
-        }
-    }
+    agent any
     environment {
         COMPOSE_TEMPLATE_FILE = 'docker-compose.yml'
         PROJECT_NAME = 'portfolio_backend'
