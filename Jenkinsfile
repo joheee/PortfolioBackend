@@ -7,8 +7,7 @@ pipeline {
     }
     environment {
         COMPOSE_TEMPLATE_FILE = 'docker-compose.yml'
-        ENV_DIR = 'env/dev.env'
-        PROJECT_NAME = 'dev_pg'
+        PROJECT_NAME = 'portfolio_backend'
     }
     stages {
         stage('Clean Workspace') {
@@ -25,8 +24,8 @@ pipeline {
             steps {
                 script {
                     echo "Deploy from ${env.BRANCH_NAME} branch"
-                    sh "docker compose -f ${COMPOSE_TEMPLATE_FILE} --project-name ${PROJECT_NAME} --env-file ${ENV_DIR} down"
-                    sh "docker compose -f ${COMPOSE_TEMPLATE_FILE} --project-name ${PROJECT_NAME} --env-file ${ENV_DIR} up -d --remove-orphans"
+                    sh "docker compose -f ${COMPOSE_TEMPLATE_FILE} --project-name ${PROJECT_NAME} down"
+                    sh "docker compose -f ${COMPOSE_TEMPLATE_FILE} --project-name ${PROJECT_NAME} up -d --remove-orphans"
                 }
             }
         }
