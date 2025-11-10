@@ -22,7 +22,7 @@ import (
 // @Router /ping [get]
 func getPing(g *gin.Context){
 	g.JSON(http.StatusOK, gin.H{
-		"message":"pong",
+		"message":"pong to the pong",
 	})
 }
 
