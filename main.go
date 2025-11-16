@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+	"os"
 
 	"github.com/gin-gonic/gin"
 	docs "github.com/joheee/portfolio-backend/docs"
@@ -21,8 +22,9 @@ import (
 // @Success 200 {string} Helloworld
 // @Router /ping [get]
 func getPing(g *gin.Context){
+	message := os.Getenv("messages")
 	g.JSON(http.StatusOK, gin.H{
-		"message":"pong to the pong",
+		"message":"env says: " + message,
 	})
 }
 
