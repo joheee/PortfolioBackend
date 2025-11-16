@@ -20,7 +20,7 @@ pipeline {
                 script {
                     echo "Deploy from ${env.BRANCH_NAME} branch"
                     sh "docker compose -f ${COMPOSE_TEMPLATE_FILE} --project-name ${PROJECT_NAME} down"
-                    sh "docker compose -f ${COMPOSE_TEMPLATE_FILE} --project-name ${PROJECT_NAME} up -d --remove-orphans"
+                    sh "docker compose -f ${COMPOSE_TEMPLATE_FILE} --project-name ${PROJECT_NAME} up -d --build --remove-orphans"
                 }
             }
         }
